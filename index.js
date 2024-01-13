@@ -1,5 +1,4 @@
 // import { program } from "commander";
-console.log('hi');
 const { program } = require("commander");
 program
   .option("-a, --action <type>", "choose action")
