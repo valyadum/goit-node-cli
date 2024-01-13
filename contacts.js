@@ -29,7 +29,8 @@ async function removeContact(contactId) {
         const newContacts = contacts.filter(item => {
             return item.id != contactId
         })
-        await fs.writeFile(contactsPath, JSON.stringify(newContacts, null, 2))
+        await fs.writeFile(contactsPath, JSON.stringify(newContacts, null, 2));
+        return contacts.find(item => { return item.id === contactId });
     }
     // ...твій код. Повертає об'єкт видаленого контакту. Повертає null, якщо контакт з таким id не знайдений.
 }
@@ -44,6 +45,7 @@ async function addContact({ name, email, phone }) {
     }
     contacts.push(newContact);
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    return newContact;
     // ...твій код. Повертає об'єкт доданого контакту (з id).
 }
 module.exports = {
